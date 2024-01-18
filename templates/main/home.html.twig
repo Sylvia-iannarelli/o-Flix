@@ -1,0 +1,97 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <!-- main -->
+    <div class="my-5 py-5 text-center">
+        <img src="favicon.png" height="100" alt="Logo O'flix" class="mb-3">
+        <h1 class="display-6 fw-bold">Films, séries TV et popcorn en illimité.</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4 text-muted">Où que vous soyez. Gratuit pour toujours.</p>
+        </div>
+    </div>
+
+    <div class="container-xl bg-light p-5 border-top">
+
+        <div class="row mb-2">
+
+            <div class="col-12 col-lg-3">
+                <h2 class="text-center text-muted fw-bold mb-4">Les genres</h2>
+                <ul class="d-flex flex-column flex-wrap list-unstyled justify-content-center">
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Action</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Animation</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Aventure</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Comédie</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Dessin animé</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Documentaire</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Drame</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Espionnage</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Famille</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Fantastique</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Historique</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Policier</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Romance</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Science-fiction</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Thriller</li>
+                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Western</li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-lg-9">
+
+                <h2 class="text-muted fw-bold mb-4">Les nouveautés</h2>
+
+                {% for index,movie in movies %}
+                    
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
+                        <div class="col-4 movie__poster"
+                        {# style="background-image: url(https://m.media-amazon.com/images/M/MV5BNThmZGY4NzgtMTM4OC00NzNkLWEwNmEtMjdhMGY5YTc1NDE4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg);" #}
+                        >
+                            <img src="{{ movie.poster }}" class="img-fluid">
+                            // TODO A supprimer si pas utile <!-- img src="https://m.media-amazon.com/images/M/MV5BNThmZGY4NzgtMTM4OC00NzNkLWEwNmEtMjdhMGY5YTc1NDE4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" class="img-fluid" -->
+                        </div>
+                        <div class="col-8 p-4 d-flex flex-column position-static">
+                            <a href="./favorites.html" class="movie__favorite fs-1 my-2 mx-3 link-danger"><i class="bi bi-bookmark-plus"></i></a>
+                            <strong class="d-inline-block mb-2 text-primary">{{ movie.type }}</strong>
+                            <h3 class="mb-1">{{ movie.title }}</h3>
+                            <div class="mb-1 text-muted">{{ movie.duration }} min</div>
+                            <p><small>{{ movie.summary }}</small>
+                            </p>
+                            <div class="d-flex" style="color: orange;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="ps-1">{{ movie.rating }}</span>
+                            </div>
+                            <a href="{{ path('app_movie_show', {id: index}) }}" class="fs-1 mt-3 text-danger align-self-start">
+                                <i class="bi bi-arrow-right-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <nav class="col-lg-9 offset-lg-3">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link">&laquo;</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+
+{% endblock %}

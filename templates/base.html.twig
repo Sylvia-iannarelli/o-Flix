@@ -1,19 +1,108 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<!-- Bootstrap icons -->
+		<link
+		rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+		<!-- Our custom CSS -->
+		<link
+		rel="stylesheet" href="{{asset('css/oflix.css')}}">
+		<!-- favicon -->
+		<link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
+
+		<title>
+			{% block title %}O'flix
+			{% endblock %}
+		</title>
+	</head>
+
+	<body>
+
+		<!-- Nav -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a href="./" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none header-logo">
+					<img src="favicon.png" height="24" alt="Logo O'flix">
+					<span class="header-logo__title">O'flix</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" href="#">Accueil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./list.html">
+								<i class="bi bi-film"></i>
+								Films, séries TV</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./favorites.html">
+								<i class="bi bi-bookmark"></i>
+								Ma liste</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+								<span>Charles</span>
+								<i class="bi bi-person-square"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="#">Profil</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">Backoffice</a>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">Déconnexion</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<button type="button" class="btn btn-danger me-2">Connexion</button>
+
+					<form class="d-flex" action="list.html">
+						<input class="form-control form-control-sm me-2" name="search" type="search" placeholder="Rechercher...">
+						<button class="btn btn-outline-danger" type="submit">
+							<i class="bi bi-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+
+		{% block body %}{% endblock %}
+
+		<!-- footer -->
+		<footer class="container-fluid py-4 border-top text-center">
+			<span class="text-muted">O'flix made with &hearts; at O'clock !
+				<br><small>Thème :<a href="" class="link-secondary text-decoration-none">
+						<i class="bi bi-toggle-on mx-1"></i>Netflix</a>
+				</small>
+			    </a>
+		    </span>
+        </footer>
+
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
     </body>
+
 </html>
