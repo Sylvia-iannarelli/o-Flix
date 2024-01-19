@@ -28,4 +28,19 @@ class MovieController extends AbstractController
             "movie" => $movie
         ]);
     }
+
+    /**
+     * Display all movies or by search
+     * @Route("/film-serie", name="app_movie_list")
+     */
+    public function list(): Response
+    {
+        $movieModel = new Movie;
+
+        $movies = $movieModel->getMovies();
+
+        return $this->render('movie/list.html.twig', [
+            "movies" => $movies
+        ]);
+    }
 }
