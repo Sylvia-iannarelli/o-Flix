@@ -25,7 +25,8 @@ class MovieController extends AbstractController
         }
 
         return $this->render('movie/show.html.twig', [
-            "movie" => $movie
+            "movie" => $movie,
+            "index" => $id
         ]);
     }
 

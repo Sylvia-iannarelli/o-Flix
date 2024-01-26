@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes favoris{% endblock %}
+
+{% block body %}
+
+    <!-- main -->
+
+    <div class="container-xl bg-light p-5 border-top">
+
+        <div class="row mb-2">
+
+            <h2 class="text-muted fw-bold mb-4">Ma liste</h2>
+
+            {# <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>A bug's life</strong> a été ajouté à votre liste de favoris.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> #}
+
+            {% for index,movie in movies %}
+                <div class="col-6">
+
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
+                        <div class="col-4 movie__poster">
+                            <img src="{{movie.poster}}">
+                        </div>
+                        <div class="col-8 p-4 d-flex flex-column position-static">
+                            {% include "favorite/_toggle_button.twig" %}
+                            <strong class="d-inline-block mb-2 text-primary">{{movie.type}}</strong>
+                            <h3 class="mb-1">{{movie.title}}</h3>
+                            <div class="mb-1 text-muted">{{movie.duration}} min</div>
+                            <a href="{{path('app_movie_show', {id: index})}}" class="fs-1 mt-3 text-danger align-self-start">
+                                <i class="bi bi-arrow-right-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="col">
+            <a href="{{path('app_favorite_empty')}}" class="btn btn-danger btn-sm" onclick="return confirm('Vider votre liste de favoris ?');">Vider la liste</a>
+        </div>
+
+    </div>
+
+{% endblock %}
