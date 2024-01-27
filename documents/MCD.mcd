@@ -1,0 +1,20 @@
+user: id_user, pseudo, password, role
+write, 0N user, 11 review
+review: id_review, content, rating, date
+
+:
+
+:
+genre: id_genre, name
+reviewed, 0N movie, 11 review
+season: season_id, number_episode, number_season
+
+:
+belongs, 0N movie, 0N genre
+movie: id_movie, title, duration, release_date, synopsis, summary, poster, type
+has, 0N movie, 11 season
+
+:
+:
+role, 0N movie, 0N actor: role, credit_order
+actor: id_actor, name, surname
