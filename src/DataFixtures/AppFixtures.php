@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
             $movie->setSummary("Summary integer vel justo vitae augue egestas pellentesque. Integer ac lectus et neque rhoncus convallis non eget odio. Nunc ac tincidunt ipsum. Morbi porttitor congue nulla non ullamcorper.");
             $movie->setPoster("https://fantasy.bnf.fr/sites/default/files/styles/pimages2/public/field_media_image/2019-12/fan_554.jpg?itok=x1r8nRdm");
             $movie->setType("Film");
+            $movie->setRating(rand(0,5));
             
             $entityManager->persist($movie);
         }

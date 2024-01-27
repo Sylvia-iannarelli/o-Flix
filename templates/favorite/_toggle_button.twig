@@ -1,12 +1,12 @@
-{% if app.session.get("favorites")[index] is defined %}
+{% if app.session.get("favorites")[movie.id] is defined %}
 
-    <a href="{{path ('app_favorite_delete',{id:index})}}" class="movie__favorite fs-1 my-2 mx-3 link-danger">
+    <a href="{{path ('app_favorite_delete',{id:movie.id})}}" class="movie__favorite fs-1 my-2 mx-3 link-danger">
         <i class="bi bi-bookmark-x-fill"></i>
     </a>
 
 {% else %}
 
-    <a href="{{path ('app_favorite_add',{id:index})}}" class="movie__favorite fs-1 my-2 mx-3 link-danger">
+    <a href="{{path ('app_favorite_add',{id:movie.id})}}" class="movie__favorite fs-1 my-2 mx-3 link-danger">
         <i class="bi bi-bookmark-plus"></i>
     </a>
 

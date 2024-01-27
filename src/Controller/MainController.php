@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\Movie;
+use App\Entity\Movie;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,12 +16,9 @@ class MainController extends AbstractController
      *
      * @return Response object response
      */
-    public function home(): Response
+    public function home(EntityManagerInterface $entityManager): Response
     {
-
-        $moviesModel = new Movie();
-
-        $movies = $moviesModel->getMovies();
+        $movies = $entityManager->getRepository(Movie::class)->findAll();
 
         return $this->render("main/home.html.twig",[
             "movies" => $movies
