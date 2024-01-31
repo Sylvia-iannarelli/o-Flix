@@ -24,16 +24,15 @@
                         <h3 class="mb-1">{{movie.title}}</h3>
                         <div class="mb-1 text-muted">{{movie.duration}} min</div>
                         <p>
-                        {# TODO #}
-                            <span class="badge bg-warning text-dark">Animation</span>
-                            <span class="badge bg-warning text-dark">Aventure</span>
-                            <span class="badge bg-warning text-dark">Comédie</span>
-                            <span class="badge bg-warning text-dark">Famille</span>
+                        {# TODO à finaliser #}
+                            {% for genre in movie.genres %}
+                                <span class="badge bg-warning text-dark">{{genre.name}}</span>
+                            {% endfor %}
                         </p>
                         <p>{{movie.summary}}</p>
                         <p>{{movie.synopsis}}</p>
 
-                        {# TODO #}
+                        {# TODO à finaliser #}
                         <div class="d-flex mb-4" style="color: orange;">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -43,15 +42,15 @@
                             <span class="ps-1">{{movie.rating}}</span>
                         </div>
 
-                        {# TODO #}
-                        <h2>3 Saisons</h2>
+                        {# TODO à finaliser #}
+                        <h2>"TODO" Saisons</h2>
                         <ul class="list-unstyled">
-                            <li><span class="badge bg-danger fs-6 mb-2">Saison 1</span><small class="ms-1">(10 épisodes)</small></li>
-                            <li><span class="badge bg-danger fs-6 mb-2">Saison 2</span><small class="ms-1">(11 épisodes)</small></li>
-                            <li><span class="badge bg-danger fs-6 mb-2">Saison 3</span><small class="ms-1">(12 épisodes)</small></li>
+                            {% for season in movie.seasons %}
+                                <li><span class="badge bg-danger fs-6 mb-2">Saison {{season.numberSeason}}</span><small class="ms-1">({{season.numberEpisode}} épisodes)</small></li>
+                            {% endfor %}
                         </ul>
 
-                        {# TODO #}
+                        {# TODO à finaliser #}
                         <dl class="row">
                             <dt class="col-sm-12">Avec</dt>
                             <dd class="col-sm-12">
