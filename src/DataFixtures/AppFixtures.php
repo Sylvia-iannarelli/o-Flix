@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Genre;
 use App\Entity\Movie;
+use App\Entity\Person;
 use App\Entity\Season;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -13,8 +14,18 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $entityManager): void
     {
-        // ! FIXTURES GENRE
 
+        // ! FIXTURE PERSON
+        for ($i=1; $i < 21; $i++) { 
+            $person = new Person();
+    
+            $person->setFirstname("Prénom $i");
+            $person->setLastname("NOM $i");
+    
+            $entityManager->persist($person);
+        }
+
+        // ! FIXTURES GENRE
         $genreList = [];
 
         for ($i=0; $i < 20; $i++) { 
