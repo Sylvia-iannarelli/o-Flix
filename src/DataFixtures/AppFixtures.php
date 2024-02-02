@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Casting;
 use App\Entity\Genre;
 use App\Entity\Movie;
 use App\Entity\Person;
@@ -16,11 +17,14 @@ class AppFixtures extends Fixture
     {
 
         // ! FIXTURE PERSON
+        $personList = [];
+        
         for ($i=1; $i < 21; $i++) { 
             $person = new Person();
     
             $person->setFirstname("Prénom $i");
             $person->setLastname("NOM $i");
+            $personList[] = $person;
     
             $entityManager->persist($person);
         }
@@ -37,8 +41,8 @@ class AppFixtures extends Fixture
             $entityManager->persist($genre);
         }
 
-        // ! FIXTURES MOVIE / SEASON
-        for ($i=1; $i < 11; $i++) { 
+        // ! FIXTURES MOVIE / SEASON / CASTING
+        for ($i=1; $i <= 20; $i++) { 
             $movie = new Movie();
 
             $movie->setTitle("Le seigneur des anneaux $i");
@@ -64,7 +68,18 @@ class AppFixtures extends Fixture
             $movie->setRating(rand(0,5));
 
             $movie->addGenre($genreList[mt_rand(0,count($genreList)-1)]);
-            
+
+            for ($j=1; $j <= 5; $j++) { 
+                $casting = new Casting();
+                $casting->setRole("Mr Smith #$j");
+                $casting->setCreditOrder($j);
+                $casting->setPerson($personList[mt_rand(0,count($personList)-1)]);
+    
+                $movie->addCasting($casting);
+                
+                $entityManager->persist($casting);
+            }
+
             $entityManager->persist($movie);
         }
 

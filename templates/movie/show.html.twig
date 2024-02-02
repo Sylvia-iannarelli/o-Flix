@@ -53,11 +53,11 @@
                         {# TODO à finaliser #}
                         <dl class="row">
                             <dt class="col-sm-12">Avec</dt>
-                            <dd class="col-sm-12">
-                                Acteur 1 (Tilt)<br>
-                                Acteur 2 (La reine)<br>
-                                Acteur 3 (Franz)<br>
-                            </dd>
+                            {% for casting in movie.castings %}
+                                <dd class="col-sm-12">
+                                    {{casting.person.firstname}} {{casting.person.lastname}} ({{casting.role}})<br>
+                                </dd>
+                            {% endfor %}
                             <dt class="col-sm-12">Pays</dt>
                             <dd class="col-sm-12">USA</dd>
                             <dt class="col-sm-12">Année</dt>
