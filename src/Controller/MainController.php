@@ -18,7 +18,7 @@ class MainController extends AbstractController
      */
     public function home(EntityManagerInterface $entityManager): Response
     {
-        $movies = $entityManager->getRepository(Movie::class)->findAll();
+        $movies = $entityManager->getRepository(Movie::class)->find10OrderByDate();
 
         return $this->render("main/home.html.twig",[
             "movies" => $movies

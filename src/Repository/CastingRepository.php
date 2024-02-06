@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Casting;
+use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,20 +40,21 @@ class CastingRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Casting[] Returns an array of Casting objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Casting[] Returns all castings for a movie
+    */
+    public function findAllJoinedToPersonByMovie(Movie $movie)
+    {
+        return $this->createQueryBuilder('c')
+            ->innerJoin("c.person", "p")
+            ->addSelect("p")
+            ->where("c.movie = :movie")
+            ->setParameter("movie", $movie)
+            ->orderBy("c.creditOrder", "ASC")
+            ->getQuery()
+            ->getResult()
+        ;
+   }
 
 //    public function findOneBySomeField($value): ?Casting
 //    {
