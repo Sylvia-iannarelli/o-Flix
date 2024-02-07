@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Provider\AppProvider;
 use App\Entity\Casting;
 use App\Entity\Genre;
 use App\Entity\Movie;
@@ -10,20 +11,24 @@ use App\Entity\Season;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $entityManager): void
     {
 
+        $faker = Factory::create("fr_FR");
+        $faker->addProvider(new AppProvider());
+
         // ! FIXTURE PERSON
         $personList = [];
         
-        for ($i=1; $i < 21; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
             $person = new Person();
     
-            $person->setFirstname("Prénom $i");
-            $person->setLastname("NOM $i");
+            $person->setFirstname($faker->firstName());
+            $person->setLastname($faker->lastName());
             $personList[] = $person;
     
             $entityManager->persist($person);
@@ -35,21 +40,21 @@ class AppFixtures extends Fixture
         for ($i=0; $i < 20; $i++) { 
             $genre = new Genre();
             
-            $genre->setName("Genre $i");   
+            $genre->setName($faker->unique()->genre());   
             $genreList[] = $genre;        
             
             $entityManager->persist($genre);
         }
 
         // ! FIXTURES MOVIE / SEASON / CASTING
-        for ($i=1; $i <= 20; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
             $movie = new Movie();
 
-            $movie->setTitle("Le seigneur des anneaux $i");
-            $movie->setReleaseDate(new DateTimeImmutable());
-            $movie->setSynopsis("Synopsis lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere ex et fringilla varius. Nullam blandit convallis elementum. Nulla eu faucibus nulla. Nullam mattis sollicitudin velit a malesuada. Nam eu ipsum non metus iaculis fringilla. Sed auctor lectus nec lectus molestie semper. Vestibulum tincidunt lectus euismod est efficitur, sit amet commodo neque dignissim. Morbi at convallis orci. Donec vel urna ut velit hendrerit commodo. Cras fringilla eleifend imperdiet. Mauris ex lorem, tristique et ipsum quis, accumsan auctor tortor.");
-            $movie->setSummary("Summary integer vel justo vitae augue egestas pellentesque. Integer ac lectus et neque rhoncus convallis non eget odio. Nunc ac tincidunt ipsum. Morbi porttitor congue nulla non ullamcorper.");
-            $movie->setPoster("https://fantasy.bnf.fr/sites/default/files/styles/pimages2/public/field_media_image/2019-12/fan_554.jpg?itok=x1r8nRdm");
+            $movie->setTitle($faker->unique()->movieTitle());
+            $movie->setReleaseDate(new DateTimeImmutable($faker->date()));
+            $movie->setSynopsis($faker->paragraph(6));
+            $movie->setSummary($faker->paragraph(3));
+            $movie->setPoster("https://picsum.photos/id/".mt_rand(1,180)."/300/400");
 
             $aleatoire = mt_rand(0,1);
             if($aleatoire === 0){
@@ -58,22 +63,29 @@ class AppFixtures extends Fixture
             } else {
                 $movie->setType("Série");
                 $movie->setDuration(mt_rand(40,70));
-                $season = new Season();
-                $season->setNumberEpisode(mt_rand(8,22));
-                $season->setNumberSeason(1);
-                $entityManager->persist($season);
-                $movie->addSeason($season);
+
+                for ($j=1; $j <= mt_rand(1,7); $j++) { 
+                    $season = new Season();
+                    $season->setNumberEpisode(mt_rand(8,22));
+                    $season->setNumberSeason($j);
+                    $entityManager->persist($season);
+                    $movie->addSeason($season);
+                }
             }
 
-            $movie->setRating(rand(0,5));
+            $movie->setRating($faker->randomFloat(1,0,5));
 
-            $movie->addGenre($genreList[mt_rand(0,count($genreList)-1)]);
+            $faker->unique(true);
 
-            for ($j=1; $j <= 5; $j++) { 
+            for ($k=0; $k < 3; $k++) { 
+                $movie->addGenre($genreList[$faker->unique()->numberBetween(0,count($genreList) -1)]);
+            }
+
+            for ($l=1; $l <= 5; $l++) { 
                 $casting = new Casting();
-                $casting->setRole("Mr Smith #$j");
-                $casting->setCreditOrder($j);
-                $casting->setPerson($personList[mt_rand(0,count($personList)-1)]);
+                $casting->setRole($faker->firstName());
+                $casting->setCreditOrder($l);
+                $casting->setPerson($personList[array_rand($personList)]);
     
                 $movie->addCasting($casting);
                 
