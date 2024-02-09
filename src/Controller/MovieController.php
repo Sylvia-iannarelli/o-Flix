@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Repository\CastingRepository;
+use App\Repository\ReviewRepository;
 use App\Repository\SeasonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,14 +18,16 @@ class MovieController extends AbstractController
      * @param int $id id of the movie
      * @Route("/film-serie/{id}", name="app_movie_show", requirements={"id"="\d+"})
      */
-    public function show(Movie $movie, CastingRepository $castingRepository, SeasonRepository $seasonRepository): Response
+    public function show(Movie $movie, CastingRepository $castingRepository, SeasonRepository $seasonRepository, ReviewRepository $reviewRepository): Response
     {
         $castings = $castingRepository->findAllJoinedToPersonByMovie($movie);
         $seasons = $seasonRepository->findAllByMovie($movie);
+        $reviews = $reviewRepository->findAllByMovie($movie);
         return $this->render('movie/show.html.twig', [
             "movie" => $movie,
             "castings" => $castings,
-            "seasons" => $seasons
+            "seasons" => $seasons,
+            "reviews" => $reviews
         ]);
     }
 

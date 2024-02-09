@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Movie;
 use App\Entity\Review;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -39,20 +40,19 @@ class ReviewRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Review[] Returns an array of Review objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+    * @return Review[] Returns an array of Review objects
+    */
+    public function findAllByMovie(Movie $movie): array
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.movie = :movie')
+            ->setParameter('movie', $movie)
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Review
 //    {

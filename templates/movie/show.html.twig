@@ -6,7 +6,9 @@
 
     <!-- main -->
 
-    <div class="container bg-lighttt pt-5">
+    <div class="container bg-light pt-5">
+
+    {% include "fragments/_flash_message.html.twig" %}
 
         <div class="row mb-2">
 
@@ -24,7 +26,6 @@
                         <h3 class="mb-1">{{movie.title}}</h3>
                         <div class="mb-1 text-muted">{{movie.duration}} min</div>
                         <p>
-                        {# TODO à finaliser #}
                             {% for genre in movie.genres %}
                                 <span class="badge bg-warning text-dark">{{genre.name}}</span>
                             {% endfor %}
@@ -63,6 +64,36 @@
                             <dt class="col-sm-12">Année</dt>
                             <dd class="col-sm-12">{{movie.releaseDate|date("Y")}}</dd>
                         </dl>
+
+                        <a href="{{path("app_review_add", {id:movie.id})}}" class="btn btn-danger">
+                            Ajouter une critique
+                        </a>
+                        <section class="mt-5">
+							{% if reviews is not empty %}
+							
+								<h2 class="text-center">Les critiques</h2>
+								{% for review in reviews %}
+									<div class="card mt-3">
+										<div class="card-header">
+											Note : {{review.rating}}
+										</div>
+										<div class="card-body" style="fontsize: 2rem;>
+											<div class="blockquote mb-0">
+                                                <p>{{review.content}}</p>
+                                                <ul>
+                                                    {% for reaction in review.reactions %}
+                                                        <li>{{reaction}}</li>	
+                                                    {% endfor %}
+                                                </ul>	
+                                                <footer class="blockquote-footer mt-2 mb-0">Pseudo : {{review.username}}<cite title="Source Title">, visionné le : {{review.watchedAt|date("d/m/Y")}}</cite></footer>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							{% else %}
+								<h2 class="text-center">Aucune critique disponible</h2>
+							{% endif %}
+						</section>
 
                     </div>
                 </div>
