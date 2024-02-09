@@ -34,7 +34,7 @@ class Review
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
-     * @Assert\Length(min=30)
+     * @Assert\Length(min=10)
      * @Assert\Length(max=500)
      */
     private $content;
