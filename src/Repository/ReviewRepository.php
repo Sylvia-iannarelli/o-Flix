@@ -48,7 +48,7 @@ class ReviewRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('r')
             ->where('r.movie = :movie')
             ->setParameter('movie', $movie)
-            ->orderBy('r.id', 'DESC')
+            ->orderBy('r.watchedAt', 'DESC')
             ->getQuery()
             ->getResult()
         ;

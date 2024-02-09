@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use App\Entity\Movie;
 use App\Repository\CastingRepository;
@@ -23,7 +23,7 @@ class MovieController extends AbstractController
         $castings = $castingRepository->findAllJoinedToPersonByMovie($movie);
         $seasons = $seasonRepository->findAllByMovie($movie);
         $reviews = $reviewRepository->findAllByMovie($movie);
-        return $this->render('movie/show.html.twig', [
+        return $this->render('front/movie/show.html.twig', [
             "movie" => $movie,
             "castings" => $castings,
             "seasons" => $seasons,
@@ -40,7 +40,7 @@ class MovieController extends AbstractController
         // TODO lier le form de recherche à ma requête
         $movies = $entityManager->getRepository(Movie::class)->findAllSearchByTitle();
 
-        return $this->render('movie/list.html.twig', [
+        return $this->render('front/movie/list.html.twig', [
             "movies" => $movies
         ]);
     }

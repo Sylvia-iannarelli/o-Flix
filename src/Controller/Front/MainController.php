@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use App\Entity\Movie;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,7 +20,7 @@ class MainController extends AbstractController
     {
         $movies = $entityManager->getRepository(Movie::class)->find10OrderByDate();
 
-        return $this->render("main/home.html.twig",[
+        return $this->render("front/main/home.html.twig",[
             "movies" => $movies
         ]);
     }

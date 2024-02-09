@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
-use App\Model\Movie;
+use App\Entity\Movie;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,7 @@ class FavoriteController extends AbstractController
 
         $movies = $session->get("favorites");
 
-        return $this->render('favorite/list.html.twig', [
+        return $this->render('front/favorite/list.html.twig', [
             "movies" => $movies
         ]);
     }
@@ -35,10 +35,8 @@ class FavoriteController extends AbstractController
      * 
      * @Route("/favoris/ajouter/{id}", name="app_favorite_add", requirements={"id"="\d+"})
      */
-    public function add(Request $request, Movie $movieModel, int $id): Response
+    public function add(Request $request, Movie $movie, int $id): Response
     {
-        // Récupération du film avec son id
-        $movie = $movieModel->getMovieById($id);
         
         // Récupération de la session
         $session = $request->getSession();

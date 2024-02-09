@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ movie.title }}{% endblock %}
+{% block title %}
+    {{ movie.title }}
+{% endblock %}
 
 {% block body %}
 
@@ -8,7 +10,7 @@
 
     <div class="container bg-light pt-5">
 
-    {% include "fragments/_flash_message.html.twig" %}
+        {% include "fragments/_flash_message.html.twig" %}
 
         <div class="row mb-2">
 
@@ -21,7 +23,7 @@
                     </div>
 
                     <div class="col-8 p-4 d-flex flex-column position-static bg-light">
-                        {% include "favorite/_toggle_button.twig" %}
+                        {% include "front/favorite/_toggle_button.twig" %}
                         <strong class="d-inline-block mb-2 text-primary">{{movie.type}}</strong>
                         <h3 class="mb-1">{{movie.title}}</h3>
                         <div class="mb-1 text-muted">{{movie.duration}} min</div>
@@ -68,7 +70,7 @@
                         <a href="{{path("app_review_add", {id:movie.id})}}" class="btn btn-danger">
                             Ajouter une critique
                         </a>
-                        <section class="mt-5">
+                        <section class="mt-5" >
 							{% if reviews is not empty %}
 							
 								<h2 class="text-center">Les critiques</h2>
@@ -77,8 +79,8 @@
 										<div class="card-header">
 											Note : {{review.rating}}
 										</div>
-										<div class="card-body" style="fontsize: 2rem;>
-											<div class="blockquote mb-0">
+										<div class="card-body">
+											<div style="fontsize: 2rem">
                                                 <p>{{review.content}}</p>
                                                 <ul>
                                                     {% for reaction in review.reactions %}
