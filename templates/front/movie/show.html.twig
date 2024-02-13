@@ -45,15 +45,16 @@
                             <span class="ps-1">{{movie.rating}}</span>
                         </div>
 
-                        {# TODO à finaliser #}
-                        <h2>"TODO" Saisons</h2>
-                        <ul class="list-unstyled">
-                            {% for season in seasons %}
-                                <li><span class="badge bg-danger fs-6 mb-2">Saison {{season.numberSeason}}</span><small class="ms-1">({{season.numberEpisode}} épisodes)</small></li>
-                            {% endfor %}
-                        </ul>
+    					{% if movie.type == "Série" %}
+                            <h2>Saisons</h2>
 
-                        {# TODO à finaliser #}
+                            <ul class="list-unstyled">
+                                {% for season in seasons %}
+                                    <li><span class="badge bg-danger fs-6 mb-2">Saison {{season.numberSeason}}</span><small class="ms-1">({{season.numberEpisode}} épisodes)</small></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
                         <dl class="row">
                             <dt class="col-sm-12">Avec</dt>
                             {% for casting in movie.castings %}

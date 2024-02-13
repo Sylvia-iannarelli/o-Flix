@@ -7,6 +7,7 @@ use App\Entity\Casting;
 use App\Entity\Genre;
 use App\Entity\Movie;
 use App\Entity\Person;
+use App\Entity\Review;
 use App\Entity\Season;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -77,7 +78,7 @@ class AppFixtures extends Fixture
 
             $faker->unique(true);
 
-            for ($k=0; $k < 3; $k++) { 
+            for ($k=0; $k < mt_rand(1,5); $k++) { 
                 $movie->addGenre($genreList[$faker->unique()->numberBetween(0,count($genreList) -1)]);
             }
 
@@ -90,6 +91,22 @@ class AppFixtures extends Fixture
                 $movie->addCasting($casting);
                 
                 $entityManager->persist($casting);
+            }
+
+            for ($m=0; $m < mt_rand(0,5); $m++) { 
+                $review = new Review();
+                $review->setUsername($faker->userName());
+                $review->setemail($faker->email());
+                $review->setContent($faker->text());
+                $review->setRating(mt_rand(1,5));
+                
+                for ($n=0; $n < 3; $n++) { 
+                    $review->setReactions($faker->randomElements($faker->reactions(),mt_rand(1,5)));
+                }
+                $review->setWatchedAt(new DateTimeImmutable($faker->date()));
+
+                $movie->addReview($review);
+                $entityManager->persist($review);
             }
 
             $entityManager->persist($movie);
