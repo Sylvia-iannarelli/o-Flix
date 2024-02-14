@@ -34,9 +34,7 @@ class MovieType extends AbstractType
             ])
             ->add('releaseDate', DateType::class, [
                 "label" => "Date de sortie",
-                "attr" => [
-                    "placeholder" => "Date de sortie"
-                ]
+                "input" => "datetime_immutable"
             ])
             ->add('synopsis', TextareaType::class, [
                 "label" => "Synopsis",

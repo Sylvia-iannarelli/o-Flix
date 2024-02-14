@@ -19,6 +19,7 @@
                 <th>Résumé</th>
                 <th>Poster</th>
                 <th>Type</th>
+                <th>Note</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,9 +30,9 @@
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.duration }}</td>
                 <td>{{ movie.releaseDate ? movie.releaseDate|date('Y-m-d') : '' }}</td>
-                <td>{{ movie.synopsis }}</td>
-                <td>{{ movie.summary }}</td>
-                <td>{{ movie.poster }}</td>
+                <td>{{ movie.synopsis|slice(0,40) }}...</td>
+                <td>{{ movie.summary|slice(0,40) }}...</td>
+                <td><img style="width:100px" src="{{ movie.poster }}" alt=""></td>
                 <td>{{ movie.type }}</td>
                 <td>{{ movie.rating }}</td>
                 <td>
