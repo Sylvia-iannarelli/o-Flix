@@ -26,7 +26,7 @@ class MovieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_back_movie_new", methods={"GET", "POST"})
+     * @Route("/ajouter", name="app_back_movie_new", methods={"GET", "POST"})
      */
     public function new(Request $request, MovieRepository $movieRepository): Response
     {

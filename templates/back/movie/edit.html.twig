@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'back/layout.html.twig' %}
 
-{% block title %}Edit Movie{% endblock %}
+{% block title %}Modifier un film / série{% endblock %}
 
-{% block body %}
-    <h1>Edit Movie</h1>
+{% block subBody %}
+    <h1>Modifier un film / série</h1>
 
     {{ include('back/movie/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_back_movie_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('app_back_movie_index') }}"><i class="bi bi-box-arrow-left"></i></a>
 
     {{ include('back/movie/_delete_form.html.twig') }}
 {% endblock %}
