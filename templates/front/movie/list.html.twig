@@ -51,11 +51,7 @@
                         <p><small>{{ movie.summary }}</small>
                         </p>
                         <div class="d-flex" style="color: orange;">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
+                            {% include "fragments/_stars.html.twig" %}
                             <span class="ps-1">{{ movie.rating }}</span>
                         </div>
                         <a href="{{path('app_movie_show', {id: movie.id})}}" class="fs-1 mt-3 text-danger align-self-start">

@@ -1,0 +1,20 @@
+{% set star = 0 %}
+
+{% for i in 1..5 %}
+    {% if i <= movie.rating %}
+        <i class="bi bi-star-fill"></i>
+        {% set star = star + 1 %}
+    {% endif %}  
+{% endfor %}
+
+{% if star < movie.rating %}
+	<i class="bi bi-star-half"></i>
+	{% set star = star + 1 %}
+{% endif %}
+
+{% if star < 5 %}
+    {% for i in star..4 %}
+        <i class="bi bi-star"></i>
+    {% endfor %}
+{% endif %}
+
