@@ -6,7 +6,7 @@
 
     <h1>Liste</h1>
 
-    <a class="btn btn-primary text-light fw-bold text-uppercase font-monospace" href="{{ path('app_back_movie_new') }}">Créer un film</a>
+    <a class="btn btn-primary fw-bold" href="{{ path('app_back_movie_new') }}">Créer un film</a>
 
     <table class="table">
         <thead>
@@ -30,8 +30,8 @@
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.duration }}</td>
                 <td>{{ movie.releaseDate ? movie.releaseDate|date('Y-m-d') : '' }}</td>
-                <td>{{ movie.synopsis|slice(0,40) }}...</td>
-                <td>{{ movie.summary|slice(0,40) }}...</td>
+                <td>{{ movie.synopsis|slice(0,30) }}...</td>
+                <td>{{ movie.summary|slice(0,30) }}...</td>
                 <td><img style="width:100px" src="{{ movie.poster }}" alt=""></td>
                 <td>{{ movie.type }}</td>
                 <td>{{ movie.rating }}</td>
