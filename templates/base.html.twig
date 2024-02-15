@@ -27,9 +27,12 @@
 
 	<body>
 
-		{% block nav %}
 			<!-- Nav -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			{% if "back" in app.request.get("_route") %}
+				<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+			{% else %}
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			{% endif %}
 				<div class="container-fluid">
 					<a href="{{path('app_main_home')}}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none header-logo">
 						<img src="{{asset('favicon.png')}}" height="24" alt="Logo O'flix">
@@ -40,24 +43,26 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" href="{{path('app_main_home')}}">Accueil</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('app_movie_list')}}">
-									<i class="bi bi-film"></i>
-									Films, séries TV</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('app_favorite_list')}}">
-									<i class="bi bi-bookmark"></i>
-									Ma liste</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('app_back_movie_index')}}">
-									<i class="bi bi-key"></i>
-									Admin</a>
-							</li>
+							{% block nav %}
+								<li class="nav-item">
+									<a class="nav-link active" href="{{path('app_main_home')}}">Accueil</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path('app_movie_list')}}">
+										<i class="bi bi-film"></i>
+										Films, séries TV</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path('app_favorite_list')}}">
+										<i class="bi bi-bookmark"></i>
+										Ma liste</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path('app_back_movie_index')}}">
+										<i class="bi bi-key"></i>
+										Admin</a>
+								</li>
+							{% endblock %}
 						</ul>
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown">
@@ -93,7 +98,6 @@
 					</div>
 				</div>
 			</nav>
-		{% endblock %}
 
 		{% block body %}{% endblock %}
 

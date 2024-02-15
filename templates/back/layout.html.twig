@@ -1,56 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block nav %}
-			<!-- Nav -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="container-fluid">
-					<a href="{{path('app_main_home')}}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none header-logo">
-						<img src="{{asset('favicon.png')}}" height="24" alt="Logo O'flix">
-						<span class="header-logo__title">O'flix</span>
-					</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" href="{{path('app_main_home')}}">Front-Office</a>
-							</li>
-						</ul>
-						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-									<span>Charles</span>
-									<i class="bi bi-person-square"></i>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a class="dropdown-item" href="#">Profil</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="#">Backoffice</a>
-									</li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li>
-										<a class="dropdown-item" href="#">Déconnexion</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-
-						<button type="button" class="btn btn-danger me-2">Connexion</button>
-
-						<form class="d-flex" action="list.html">
-							<input class="form-control form-control-sm me-2" name="search" type="search" placeholder="Rechercher...">
-							<button class="btn btn-outline-danger" type="submit">
-								<i class="bi bi-search"></i>
-							</button>
-						</form>
-					</div>
-				</div>
-			</nav>
+	<!-- Nav -->
+	<li class="nav-item">
+		<a class="nav-link active" href="{{path('app_main_home')}}">Front-Office</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('app_back_movie_index')}}">
+			<i class="bi bi-film"></i>
+			Films, séries TV</a>
+	</li>
 {% endblock %}
 
 {% block body %}
