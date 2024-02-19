@@ -57,7 +57,7 @@ class MovieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_back_movie_edit", methods={"GET", "POST"})
+     * @Route("/{id}/editer", name="app_back_movie_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Movie $movie, MovieRepository $movieRepository): Response
     {

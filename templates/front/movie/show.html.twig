@@ -64,13 +64,18 @@
                             <dd class="col-sm-12">{{movie.releaseDate|date("Y")}}</dd>
                         </dl>
 
-                        <a href="{{path("app_review_add", {id:movie.id})}}" class="btn btn-danger">
-                            Ajouter une critique
-                        </a>
+                        
                         <section class="mt-5" >
 							{% if reviews is not empty %}
 							
 								<h2 class="text-center">Les critiques</h2>
+                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                        <a href="{{path("app_review_add", {id:movie.id})}}" class="btn btn-danger">
+                                            Ajouter une critique
+                                        </a>
+                                        {% else %}
+                                            <p class="text-center">Vous devez être connecté-e pour ajouter un commentaire</p>
+                                    {% endif %}
 								{% for review in reviews %}
 									<div class="card mt-3">
 										<div class="card-header">
