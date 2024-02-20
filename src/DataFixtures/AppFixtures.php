@@ -9,13 +9,22 @@ use App\Entity\Movie;
 use App\Entity\Person;
 use App\Entity\Review;
 use App\Entity\Season;
+use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+    private $passwordHasher;
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $entityManager): void
     {
 
@@ -111,6 +120,31 @@ class AppFixtures extends Fixture
 
             $entityManager->persist($movie);
         }
+
+        // ! FIXTURES USERS
+
+        $admin = new User();
+        $admin->setEmail("admin@oclock.io");
+        $admin->setRoles(["ROLE_ADMIN"]);
+        $admin->setPassword($this->passwordHasher->hashPassword($admin, "admin"));
+
+        $entityManager->persist($admin);
+
+        $manager = new User();
+        $manager->setEmail("manager@oclock.io");
+        $manager->setRoles(["ROLE_MANAGER"]);
+        $manager->setPassword($this->passwordHasher->hashPassword($manager, "manager"));
+
+        $entityManager->persist($manager);
+
+        $user = new User();
+        $user->setEmail("user@oclock.io");
+        $user->setRoles([]);
+        $user->setPassword($this->passwordHasher->hashPassword($user, "user"));
+
+        $entityManager->persist($user);
+
+
 
         $entityManager->flush();
     }
