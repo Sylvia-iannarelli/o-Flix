@@ -1,0 +1,14 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block subBody %}
+    <h1>Modifier un utilisateur</h1>
+
+    {{ include('back/user/_form.html.twig') }}
+
+        <a class="btn btn-success  btn-lg" href="{{ path('app_back_user_index') }}"><i class="bi bi-box-arrow-left"></i></a>
+
+        {{ include('back/user/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

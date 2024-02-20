@@ -1,0 +1,12 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Nouvel utilisateur{% endblock %}
+
+{% block subBody %}
+    <h1>Créer un utilisateur</h1>
+
+    {{ include('back/user/_form.html.twig') }}
+
+        <a class="btn btn-success btn-lg" href="{{ path('app_back_user_index') }}"><i class="bi bi-box-arrow-left"></i></a>
+    </div>
+{% endblock %}
