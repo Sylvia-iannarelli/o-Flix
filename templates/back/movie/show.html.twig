@@ -43,6 +43,14 @@
                 <th>Note</th>
                 <td>{{ movie.rating }}</td>
             </tr>
+            
+            <tr>
+                <th>Genre(s)</th>
+                <td>{% for genre in movie.genres %}
+                <span class="badge bg-warning text-dark">{{genre.name}}</span>
+            {% endfor %}</td>
+            </tr>
+
         </tbody>
     </table>
 

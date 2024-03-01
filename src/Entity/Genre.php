@@ -25,18 +25,13 @@ class Genre
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Movie::class, inversedBy="genres")
+     * @ORM\ManyToMany(targetEntity=Movie::class, mappedBy="genres")
      */
     private $movies;
 
     public function __construct()
     {
         $this->movies = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 
     public function getId(): ?int
@@ -68,6 +63,7 @@ class Genre
     {
         if (!$this->movies->contains($movie)) {
             $this->movies[] = $movie;
+            $movie->addGenre($this);
         }
 
         return $this;
@@ -75,7 +71,9 @@ class Genre
 
     public function removeMovie(Movie $movie): self
     {
-        $this->movies->removeElement($movie);
+        if ($this->movies->removeElement($movie)) {
+            $movie->removeGenre($this);
+        }
 
         return $this;
     }
