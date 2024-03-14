@@ -35,7 +35,6 @@
                         <p>{{movie.summary}}</p>
                         <p>{{movie.synopsis}}</p>
 
-                        {# TODO à finaliser #}
                         <div class="d-flex mb-4" style="color: orange;">
                             {% include "fragments/_stars.html.twig" %}
                             <span class="ps-1">{{movie.rating}}</span>
@@ -64,18 +63,18 @@
                             <dd class="col-sm-12">{{movie.releaseDate|date("Y")}}</dd>
                         </dl>
 
-                        
                         <section class="mt-5" >
+                            <div class="text-center">
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <a href="{{path("app_review_add", {id:movie.id})}}" class="mb-3 btn btn-danger">
+                                        Ajouter une critique
+                                    </a>
+                                    {% else %}
+                                        <p>Vous devez être connecté-e pour ajouter une critique</p>
+                                {% endif %}
+                            </div>
 							{% if reviews is not empty %}
-							
 								<h2 class="text-center">Les critiques</h2>
-                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                        <a href="{{path("app_review_add", {id:movie.id})}}" class="btn btn-danger">
-                                            Ajouter une critique
-                                        </a>
-                                        {% else %}
-                                            <p class="text-center">Vous devez être connecté-e pour ajouter un commentaire</p>
-                                    {% endif %}
 								{% for review in reviews %}
 									<div class="card mt-3">
 										<div class="card-header">
