@@ -8,6 +8,8 @@ use App\Repository\MovieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,7 +30,7 @@ class MovieController extends AbstractController
     /**
      * @Route("/ajouter", name="app_back_movie_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, MovieRepository $movieRepository): Response
+    public function new(Request $request, MovieRepository $movieRepository, MailerInterface $mailer): Response
     {
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie);
@@ -36,6 +38,15 @@ class MovieController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             $movieRepository->add($movie, true);
+
+            $email = (new Email())
+                ->from('iannarelli.sylvia@gmail.com')
+                ->to('iannarelli.sylvia@gmail.com')
+                ->subject('Nouveau film ajouté : ' . $movie->getTitle())
+                ->text('Sending emails is fun again!')
+                ->html('<p>Validation de l\'envoi, en attente du Twig</p>');
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_back_movie_index', [], Response::HTTP_SEE_OTHER);
         }
