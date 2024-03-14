@@ -1,0 +1,3 @@
+<h3>Le film "{{ movie.title }}" a été créé.</h3>
+<p>Le responsable de cette création est l'utilisateur : {{ user.email }}</p>
+<a href="{{ url("app_movie_show", {id:movie.id}) }}">Voir la page du film ajouté</a>
