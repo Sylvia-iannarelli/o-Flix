@@ -24,5 +24,9 @@ services:
     App\Service\MyMailerService:
         arguments:
             $adminMail: '%env(string:ADMIN_MAIL)%'
+    App\Service\FavoriteService:
+        arguments:
+            $maxFav: '%env(int:MAX_FAV)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

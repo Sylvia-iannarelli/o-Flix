@@ -10,12 +10,8 @@
 
         <div class="row mb-2">
 
+            {% include "fragments/_flash_message.html.twig" %}
             <h2 class="text-muted fw-bold mb-4">Ma liste</h2>
-
-            {# <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>A bug's life</strong> a été ajouté à votre liste de favoris.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div> #}
 
             {% for index,movie in movies %}
                 <div class="col-6">
@@ -42,6 +38,8 @@
 
         <div class="col">
             <a href="{{path('app_favorite_empty')}}" class="btn btn-danger btn-sm" onclick="return confirm('Vider votre liste de favoris ?');">Vider la liste</a>
+            <a href="{{path('app_movie_list')}}" class="btn btn-warning btn-sm ms-3">Retour vers la liste</a>
+            <a href="{{path('app_main_home')}}" class="btn btn-success btn-sm ms-3">Retour vers l'accueil</a>
         </div>
 
     </div>
