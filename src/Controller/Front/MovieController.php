@@ -6,6 +6,7 @@ use App\Entity\Movie;
 use App\Repository\CastingRepository;
 use App\Repository\ReviewRepository;
 use App\Repository\SeasonRepository;
+use App\Service\OmdbApiService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,7 @@ class MovieController extends AbstractController
      * @param int $id id of the movie
      * @Route("/film-serie/{id}", name="app_movie_show", requirements={"id"="\d+"})
      */
-    public function show(Movie $movie, CastingRepository $castingRepository, SeasonRepository $seasonRepository, ReviewRepository $reviewRepository): Response
+    public function show(Movie $movie, CastingRepository $castingRepository, SeasonRepository $seasonRepository, ReviewRepository $reviewRepository, OmdbApiService $omdb): Response
     {
         $castings = $castingRepository->findAllJoinedToPersonByMovie($movie);
         $seasons = $seasonRepository->findAllByMovie($movie);
