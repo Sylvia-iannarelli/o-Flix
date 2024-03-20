@@ -39,40 +39,49 @@ class MovieRepository extends ServiceEntityRepository
         }
     }
 
-   /**
+    /**
     * @return Movie[] Returns an array of Movie objects
     */
-   public function findAllSearchByTitle($search = null): array
-   {
-       return $this->createQueryBuilder('m')
-           ->orderBy('m.title', 'ASC')
-           ->where("m.title LIKE :search")
-           ->setParameter("search", "%".$search."%")
-           ->getQuery()
-           ->getResult()
-        ;
-   }
+    public function findAllSearchByTitle($search = null): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.title', 'ASC')
+            ->where("m.title LIKE :search")
+            ->setParameter("search", "%".$search."%")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
-   /**
+    /**
     * @return Movie[] Returns an array of Movie objects
     */
-   public function find10OrderByDate(): array
-   {
-       return $this->createQueryBuilder('m')
-           ->orderBy('m.releaseDate', 'DESC')
-           ->setMaxResults(10)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    public function find10OrderByDate(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.releaseDate', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
-//    public function findOneBySomeField($value): ?Movie
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findRandomMovie()
+    {
+        // On recupère la connexion à la BDD
+        $conn = $this->getEntityManager()->getConnection();
+
+        // On recherche les films, on les trie aléatoirement et on en garde qu'un 
+        $sql = '
+            SELECT * FROM movie m
+            ORDER BY RAND() LIMIT 1
+        ';
+
+        // On execute la requête
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // On récupère un tableau
+        return $resultSet->fetchAssociative();
+    }
 }
