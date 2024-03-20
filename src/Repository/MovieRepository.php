@@ -47,7 +47,7 @@ class MovieRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('m')
             ->orderBy('m.title', 'ASC')
             ->where("m.title LIKE :search")
-            ->setParameter("search", "%".$search."%")
+            ->setParameter("search", "%" . $search . "%")
             ->getQuery()
             ->getResult()
             ;

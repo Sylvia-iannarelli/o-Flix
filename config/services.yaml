@@ -30,6 +30,20 @@ services:
     App\Service\OmdbApiService:
         arguments:
             $apiKey: '%env(string:API_KEY)%'
+    App\Listener\MovieListener:
+        tags:
+            -
+                # these are the options required to define the entity listener
+                name: 'doctrine.orm.entity_listener'
+                event: 'prePersist'
+                entity: 'App\Entity\Movie'
+                method: 'slugifyTitle'
+            -
+                # these are the options required to define the entity listener
+                name: 'doctrine.orm.entity_listener'
+                event: 'preUpdate'
+                entity: 'App\Entity\Movie'
+                method: 'slugifyTitle'        
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
