@@ -47,10 +47,23 @@
             <tr>
                 <th>Genre(s)</th>
                 <td>{% for genre in movie.genres %}
-                <span class="badge bg-warning text-dark">{{genre.name}}</span>
-            {% endfor %}</td>
+                    <span class="badge bg-warning text-dark">{{genre.name}}</span>
+                {% endfor %}</td>
             </tr>
 
+            <tr>
+                <th>Casting*</th>
+                <td>{% for casting in movie.castings %}
+                    <h5>
+                        <span class="badge bg-light text-dark">{{casting.person}} : {{casting.role}}</span>
+                    </h5>
+                {% endfor %}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>(*Le casting se modifie dans la catégorie correspondante)</td>
+            </tr>
+            
         </tbody>
     </table>
 
