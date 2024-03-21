@@ -1,0 +1,12 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Nouveau genre{% endblock %}
+
+{% block subBody %}
+    <h1>Créer un genre</h1>
+
+    {{ include('back/genre/_form.html.twig') }}
+
+        <a class="btn btn-success btn-lg" href="{{ path('app_back_genre_index') }}"><i class="bi bi-box-arrow-left"></i></a>
+    </div>
+{% endblock %}
