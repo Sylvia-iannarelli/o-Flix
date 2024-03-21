@@ -1,0 +1,41 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Casting{% endblock %}
+
+{% block subBody %}
+    <h1>Casting</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ casting.id }}</td>
+            </tr>
+            <tr>
+                <th>Ordre dans la liste</th>
+                <td>{{ casting.creditOrder }}</td>
+            </tr>
+            <tr>
+                <th>Film</th>
+                <td>{{ casting.movie }}</td>
+            </tr>
+            <tr>
+                <th>Rôle joué</th>
+                <td>{{ casting.role }}</td>
+            </tr>
+            <tr>
+                <th>Acteur</th>
+                <td>{{ casting.person }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="justify-content-center d-flex flex-nowrap gap-3">
+        <a class="btn btn-success btn-lg" href="{{ path('app_back_casting_index') }}"><i class="bi bi-box-arrow-left"></i></a>
+
+        <a class="btn btn-warning btn-lg" href="{{ path('app_back_casting_edit', {'id': casting.id}) }}"><i class="bi bi-pencil"></i></a>
+
+        {{ include('back/casting/_delete_form.html.twig') }}
+    </div>    
+
+{% endblock %}

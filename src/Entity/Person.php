@@ -41,7 +41,7 @@ class Person
 
     public function __toString()
     {
-        return $this->lastname.' '.$this->firstname;
+        return $this->firstname.' '.$this->lastname;
     }
 
     public function getId(): ?int

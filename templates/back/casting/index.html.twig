@@ -1,0 +1,45 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Liste des castings{% endblock %}
+
+{% block subBody %}
+    <h1>Liste</h1>
+
+    <a class="btn btn-primary fw-bold" href="{{ path('app_back_casting_new') }}">Créer un casting</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ordre</th>
+                <th>Film</th>
+                <th>Rôle joué</th>
+                <th>Acteur</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for casting in castings %}
+            <tr>
+                <td>{{ casting.id }}</td>
+                <td>{{ casting.creditOrder }}</td>
+                <td>{{ casting.movie }}</td>
+                <td>{{ casting.role }}</td>
+                <td>{{ casting.person }}</td>
+                <td>
+                    <div class="justify-content-center d-flex flex-nowrap gap-3">
+                        <a class="btn btn-success btn-lg" href="{{ path('app_back_casting_show', {'id': casting.id}) }}"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-warning btn-lg" href="{{ path('app_back_casting_edit', {'id': casting.id}) }}"><i class="bi bi-pencil"></i></a>
+                        {{ include('back/casting/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
