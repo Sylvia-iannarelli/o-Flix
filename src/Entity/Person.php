@@ -39,6 +39,11 @@ class Person
         $this->castings = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->lastname.' '.$this->firstname;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

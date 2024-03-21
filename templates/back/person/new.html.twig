@@ -1,0 +1,12 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Nouvel acteur{% endblock %}
+
+{% block subBody %}
+    <h1>Créer un acteur</h1>
+
+    {{ include('back/person/_form.html.twig') }}
+
+        <a class="btn btn-success btn-lg" href="{{ path('app_back_person_index') }}"><i class="bi bi-box-arrow-left"></i></a>
+    </div>
+{% endblock %}
