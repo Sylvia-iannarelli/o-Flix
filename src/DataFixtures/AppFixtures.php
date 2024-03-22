@@ -102,7 +102,7 @@ class AppFixtures extends Fixture
                 $entityManager->persist($casting);
             }
 
-            for ($m=0; $m < mt_rand(0,5); $m++) { 
+            for ($m=0; $m < mt_rand(1,5); $m++) { 
                 $review = new Review();
                 $review->setUsername($faker->userName());
                 $review->setemail($faker->email());

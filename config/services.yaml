@@ -44,7 +44,15 @@ services:
                 name: 'doctrine.orm.entity_listener'
                 event: 'preUpdate'
                 entity: 'App\Entity\Movie'
-                method: 'slugifyTitle'        
+                method: 'slugifyTitle'
+    App\Listener\ReviewListener:
+        tags:
+            -
+                # these are the options required to define the entity listener
+                name: 'doctrine.orm.entity_listener'
+                event: 'postPersist'
+                entity: 'App\Entity\Review'
+                method: 'updateRatingMovie'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
