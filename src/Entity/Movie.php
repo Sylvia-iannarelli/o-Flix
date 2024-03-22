@@ -6,6 +6,7 @@ use App\Repository\MovieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -16,71 +17,85 @@ class Movie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"movies"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"movies"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"movies"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="date_immutable")
+     * @Groups({"movies"})
      */
     private $releaseDate;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"movies"})
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Groups({"movies"})
      */
     private $summary;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"movies"})
      */
     private $poster;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"movies"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"movies"})
      */
     private $rating;
 
     /**
      * @ORM\OneToMany(targetEntity=Season::class, mappedBy="movie", orphanRemoval=true)
+     * @Groups({"movies"})
      */
     private $seasons;
 
     /**
      * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="movies")
+     * @Groups({"movies"})
      */
     private $genres;
 
     /**
      * @ORM\OneToMany(targetEntity=Casting::class, mappedBy="movie", orphanRemoval=true)
+     * @Groups({"movies"})
      */
     private $castings;
 
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="movie", orphanRemoval=true)
+     * @Groups({"movies"})
      */
     private $reviews;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"movies"})
      */
     private $slug;
 

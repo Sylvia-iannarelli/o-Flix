@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ReviewRepository::class)
@@ -21,6 +22,7 @@ class Review
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups({"movies"})
      */
     private $username;
 
@@ -28,6 +30,7 @@ class Review
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Email
+     * @Groups({"movies"})
      */
     private $email;
 
@@ -36,23 +39,27 @@ class Review
      * @Assert\NotBlank
      * @Assert\Length(min=10)
      * @Assert\Length(max=500)
+     * @Groups({"movies"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank
+     * @Groups({"movies"})
      */
     private $rating;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"movies"})
      */
     private $reactions = [];
 
     /**
      * @ORM\Column(type="datetime_immutable")
      * @Assert\NotBlank
+     * @Groups({"movies"})
      */
     private $watchedAt;
 
