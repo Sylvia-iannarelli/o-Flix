@@ -11,12 +11,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     /**
-     * @Route("/api/movies", name="app_api_movie_index", methods={"GET"})
+     * Endpoint for all movies with infos of all relations
+     * @Route("/api/movies", name="app_api_movie_getMovies", methods={"GET"})
      */
-    public function index(MovieRepository $movieRepository): JsonResponse
+    public function getMovies(MovieRepository $movieRepository): JsonResponse
     {
         $movies = $movieRepository->findAll();
 
         return $this->json($movies, Response::HTTP_OK, [], ["groups" => "movies"]);
+    }
+
+    /**
+     * Endpoint for a random movie
+     * @Route("/api/movies/random", name="app_api_movie_getRandomMovie", methods={"GET"})
+     */
+    public function getRandomMovie(MovieRepository $movieRepository): JsonResponse
+    {
+        $movie = $movieRepository->findRandomMovie();
+
+        return $this->json($movie);
     }
 }

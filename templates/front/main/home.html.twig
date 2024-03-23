@@ -18,22 +18,9 @@
             <div class="col-12 col-lg-3">
                 <h2 class="text-center text-muted fw-bold mb-4">Les genres</h2>
                 <ul class="d-flex flex-column flex-wrap list-unstyled justify-content-center">
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Action</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Animation</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Aventure</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Comédie</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Dessin animé</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Documentaire</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Drame</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Espionnage</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Famille</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Fantastique</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Historique</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Policier</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Romance</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Science-fiction</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Thriller</li>
-                    <li class="btn btn-sm btn-outline-danger mx-1 mb-2">Western</li>
+                {% for genre in genres %}
+                    <a class="btn btn-sm btn-outline-danger mx-1 mb-2" href="{{ path('app_genre_getMoviesByGenre', {id: genre.id}) }}">{{genre.name}}</a>
+                {% endfor %}
                 </ul>
             </div>
 

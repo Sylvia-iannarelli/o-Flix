@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Genre;
 use App\Entity\Movie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,9 +20,11 @@ class MainController extends AbstractController
     public function home(EntityManagerInterface $entityManager): Response
     {
         $movies = $entityManager->getRepository(Movie::class)->find10OrderByDate();
+        $genres = $entityManager->getRepository(Genre::class)->findAllOrderByName();
 
         return $this->render("front/main/home.html.twig",[
-            "movies" => $movies
+            "movies" => $movies,
+            "genres" => $genres
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Genre;
 use App\Entity\Movie;
 use App\Repository\CastingRepository;
 use App\Repository\ReviewRepository;
@@ -38,11 +39,13 @@ class MovieController extends AbstractController
      */
     public function list(EntityManagerInterface $entityManager): Response
     {
+        $genres = $entityManager->getRepository(Genre::class)->findAllOrderByName();
         // TODO lier le form de recherche à ma requête
         $movies = $entityManager->getRepository(Movie::class)->findAllSearchByTitle();
 
         return $this->render('front/movie/list.html.twig', [
-            "movies" => $movies
+            "movies" => $movies,
+            "genres" => $genres
         ]);
     }
 
