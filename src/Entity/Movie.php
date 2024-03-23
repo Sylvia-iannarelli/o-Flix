@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -24,6 +25,7 @@ class Movie
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"movies"})
+     * @Assert\NotBlank
      */
     private $title;
 
@@ -42,12 +44,14 @@ class Movie
     /**
      * @ORM\Column(type="text")
      * @Groups({"movies"})
+     * @Assert\Length(min=5)
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="string", length=500)
      * @Groups({"movies"})
+     * @Assert\Length(min=5)
      */
     private $summary;
 

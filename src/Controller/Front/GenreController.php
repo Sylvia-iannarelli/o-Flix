@@ -10,16 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GenreController extends AbstractController
 {
-    // /**
-    //  * @Route("/genre", name="app_front_genre")
-    //  */
-    // public function index(): Response
-    // {
-    //     return $this->render('front/genre/index.html.twig', [
-    //         'controller_name' => 'GenreController',
-    //     ]);
-    // }
-
     /**
      * Endpoint for all movies of a specific genre
      * @Route("/genre/{id}/movies", name="app_genre_getMoviesByGenre")
