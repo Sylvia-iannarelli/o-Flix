@@ -18,7 +18,7 @@ class MovieController extends AbstractController
     /**
      * Display a single movie
      * @param int $id id of the movie
-     * @Route("/film-serie/{id}", name="app_movie_show", requirements={"id"="\d+"})
+     * @Route("/film-serie/{id}/{slug}", name="app_movie_show", requirements={"id"="\d+"})
      */
     public function show(Movie $movie, CastingRepository $castingRepository, SeasonRepository $seasonRepository, ReviewRepository $reviewRepository, OmdbApiService $omdb): Response
     {
