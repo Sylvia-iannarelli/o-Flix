@@ -12,16 +12,16 @@
                 <td>{{ season.id }}</td>
             </tr>
             <tr>
-                <th>Série</th>
+                <th>{{ season.movie.type }}</th>
                 <td>{{ season.movie }}</td>
-            </tr>
-            <tr>
-                <th>Nombre d'épisodes dans la saison</th>
-                <td>{{ season.numberEpisode }}</td>
             </tr>
             <tr>
                 <th>Saison numéro :</th>
                 <td>{{ season.numberSeason }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'épisodes dans la saison</th>
+                <td>{{ season.numberEpisode }}</td>
             </tr>
         </tbody>
     </table>

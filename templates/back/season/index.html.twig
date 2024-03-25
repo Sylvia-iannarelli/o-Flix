@@ -12,9 +12,10 @@
             <tr>
                 <th>Id</th>
                 <th>Série</th>
-                <th>NumberEpisode</th>
-                <th>NumberSeason</th>
-                <th>Actions</th>
+                <th>Type</th>
+                <th>Saison numéro :</th>
+                <th>Nombre d'épisodes</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +23,9 @@
             <tr>
                 <td>{{ season.id }}</td>
                 <td>{{ season.movie }}</td>
-                <td>{{ season.numberEpisode }}</td>
+                <td>{{ season.movie.type }}</td>
                 <td>{{ season.numberSeason }}</td>
+                <td>{{ season.numberEpisode }}</td>
                 <td>
                     <div class="justify-content-center d-flex flex-nowrap gap-3">
                         <a class="btn btn-success btn-lg" href="{{ path('app_back_season_show', {'id': season.id}) }}"><i class="bi bi-eye"></i></a>
