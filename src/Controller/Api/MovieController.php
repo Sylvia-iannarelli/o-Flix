@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class MovieController extends AbstractController
 {
@@ -55,6 +56,7 @@ class MovieController extends AbstractController
      * Endpoint for adding a movie
      * 
      * @Route("/api/movies", name="app_api_movie_postMovie", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function postMovie(Request $request, SerializerInterface $serializer, EntityManagerInterface $entityManager, ValidatorInterface $validator): JsonResponse
     {
