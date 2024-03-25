@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/back/casting")
+ * @Route("/back-office/casting")
  */
 class CastingController extends AbstractController
 {

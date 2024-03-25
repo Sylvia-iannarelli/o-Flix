@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Genre;
 use App\Entity\Movie;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -75,6 +76,10 @@ class MovieType extends AbstractType
             ->add('genres', EntityType::class, [
                 "label" => "Genre(s)**",
                 "class" => Genre::class,
+                "query_builder" => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('g')
+                        ->orderBy('g.name', 'ASC');
+                },
                 "multiple" => true,
                 "expanded" => true,
                 "choice_label" => "name",

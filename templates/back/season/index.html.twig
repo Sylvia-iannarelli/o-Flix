@@ -1,0 +1,43 @@
+{% extends 'back/layout.html.twig' %}
+
+{% block title %}Liste des saisons{% endblock %}
+
+{% block subBody %}
+    <h1>Liste</h1>
+
+    <a class="btn btn-primary fw-bold" href="{{ path('app_back_season_new') }}">Créer une saison</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Série</th>
+                <th>NumberEpisode</th>
+                <th>NumberSeason</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for season in seasons %}
+            <tr>
+                <td>{{ season.id }}</td>
+                <td>{{ season.movie }}</td>
+                <td>{{ season.numberEpisode }}</td>
+                <td>{{ season.numberSeason }}</td>
+                <td>
+                    <div class="justify-content-center d-flex flex-nowrap gap-3">
+                        <a class="btn btn-success btn-lg" href="{{ path('app_back_season_show', {'id': season.id}) }}"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-warning btn-lg" href="{{ path('app_back_season_edit', {'id': season.id}) }}"><i class="bi bi-pencil"></i></a>
+                        {{ include('back/season/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
