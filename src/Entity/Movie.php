@@ -103,6 +103,12 @@ class Movie
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"movies"})
+     */
+    private $country;
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
@@ -339,6 +345,18 @@ class Movie
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }

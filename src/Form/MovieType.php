@@ -44,6 +44,12 @@ class MovieType extends AbstractType
                     "placeholder" => "Synopsis"
                 ]
             ])
+            ->add('country', TextType::class, [
+                "label" => "Pays",
+                "attr" => [
+                    "placeholder" => "Pays"
+                ]
+            ])
             ->add('summary', TextareaType::class, [
                 "label" => "Résumé",
                 "attr" => [

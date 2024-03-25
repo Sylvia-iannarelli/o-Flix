@@ -397,6 +397,68 @@ class AppProvider{
         "dream"
     ];
 
+    private $countries = [
+        "Afrique du Sud",
+        "Albanie",
+        "Algérie",
+        "Allemagne",
+        "Argentine",
+        "Australie",
+        "Autriche",
+        "Belgique",
+        "Biélorussie",
+        "Brésil",
+        "Bulgarie",
+        "Canada",
+        "Chine",
+        "Croatie",
+        "Danemark",
+        "Egypte",
+        "Equateur",
+        "Espagne",
+        "Etats-Unis",
+        "Finlande",
+        "France",
+        "Grèce",
+        "Inde",
+        "Irak",
+        "Iran",
+        "Irlande",
+        "Italie",
+        "Jamaïque",
+        "Japon",
+        "Liban",
+        "Libye",
+        "Lituanie",
+        "Luxembourg",
+        "Malaisie",
+        "Malte",
+        "Maroc",
+        "Mexique",
+        "Népal",
+        "Nicaragua",
+        "Norvège",
+        "Nouvelle-Zélande",
+        "Pakistan",
+        "Pays-Bas",
+        "Philippines",
+        "Pologne",
+        "Portugal",
+        "Roumanie",
+        "Royaume-Uni",
+        "Russie",
+        "Serbie",
+        "Sri Lanka",
+        "Suède",
+        "Suisse",
+        "Syrie",
+        "Thaïlande",
+        "Tusinie",
+        "Turquie",
+        "Vénézuéla",
+        "Vietnam"
+    ];
+
     /**
      * Get an array of reactions
      * @return array reactions
@@ -419,5 +481,13 @@ class AppProvider{
      */
     public function genre(){
         return $this->genres[array_rand($this->genres)];
+    }
+
+    /**
+     * Get a random country
+     * @return string a country
+     */
+    public function countries(){
+        return $this->countries[array_rand($this->countries)];
     }
 }

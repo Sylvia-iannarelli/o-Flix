@@ -17,6 +17,7 @@
                 <th>Date de réalisation</th>
                 <th>Synopsis</th>
                 <th>Résumé</th>
+                <th>Pays</th>
                 <th>Poster</th>
                 <th>Type</th>
                 <th>Note</th>
@@ -32,6 +33,7 @@
                 <td>{{ movie.releaseDate ? movie.releaseDate|date('Y-m-d') : '' }}</td>
                 <td>{{ movie.synopsis|slice(0,30) }}...</td>
                 <td>{{ movie.summary|slice(0,30) }}...</td>
+                <td>{{ movie.country }}</td>
                 <td><img style="width:100px" src="{{ movie.poster }}" alt=""></td>
                 <td>{{ movie.type }}</td>
                 <td>{{ movie.rating }}</td>
@@ -45,7 +47,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">Aucun enregistrement trouvé</td>
+                <td colspan="11">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -65,6 +65,7 @@ class AppFixtures extends Fixture
             $movie->setSynopsis($faker->paragraph(6));
             $movie->setSummary($faker->paragraph(3));
             $movie->setPoster("https://picsum.photos/id/".mt_rand(1,180)."/300/400");
+            $movie->setCountry($faker->countries());
 
             $aleatoire = mt_rand(0,1);
             if($aleatoire === 0){
