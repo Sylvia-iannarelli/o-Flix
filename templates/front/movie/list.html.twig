@@ -13,9 +13,9 @@
 
             <div class="col-12 col-lg-3">
                 <h2 class="text-center text-muted fw-bold mb-4">Les genres</h2>
-                <ul class="d-flex flex-column flex-wrap list-unstyled justify-content-center">
+                <ul class="d-flex flex-column flex-wrap list-unstyled justify-content-center gap-2">
                 {% for genre in genres %}
-                    <a class="btn btn-sm btn-outline-danger mx-1 mb-2" href="{{ path('app_genre_getMoviesByGenre', {id: genre.id}) }}">{{genre.name}}</a>
+                    <a class="btn btn-mm btn-outline-danger  pt-2 mx-1" href="{{ path('app_genre_getMoviesByGenre', {id: genre.id}) }}">{{genre.name}}</a>
                 {% endfor %}
                 </ul>
             </div>
