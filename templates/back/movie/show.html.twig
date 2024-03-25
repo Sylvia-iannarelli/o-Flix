@@ -12,6 +12,13 @@
                 <td>{{ movie.id }}</td>
             </tr>
             <tr>
+                <th>Poster</th>
+                <td>
+                    <img style="width:200px" src="{{ movie.poster }}" alt="Poster du film">
+                    <p>{{ movie.poster }}</p>
+                </td>
+            </tr>
+            <tr>
                 <th>Titre</th>
                 <td>{{ movie.title }}</td>
             </tr>
@@ -34,10 +41,6 @@
             <tr>
                 <th>Pays</th>
                 <td>{{ movie.country }}</td>
-            </tr>
-            <tr>
-                <th>Poster</th>
-                <td>{{ movie.poster }}</td>
             </tr>
             <tr>
                 <th>Type</th>
