@@ -10,6 +10,7 @@ use App\Repository\SeasonRepository;
 use App\Service\OmdbApiService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,11 +38,10 @@ class MovieController extends AbstractController
      * Display all movies or by search
      * @Route("/film-serie", name="app_movie_list")
      */
-    public function list(EntityManagerInterface $entityManager): Response
+    public function list(EntityManagerInterface $entityManager, Request $request): Response
     {
         $genres = $entityManager->getRepository(Genre::class)->findAllOrderByName();
-        // TODO lier le form de recherche à ma requête
-        $movies = $entityManager->getRepository(Movie::class)->findAllSearchByTitle();
+        $movies = $entityManager->getRepository(Movie::class)->findAllSearchByTitle($request->get("search"));
 
         return $this->render('front/movie/list.html.twig', [
             "movies" => $movies,
