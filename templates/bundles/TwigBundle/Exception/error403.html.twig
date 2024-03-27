@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="card text-bg-dark  text-center">
+        <img src="{{asset('images/pop-corn-vengeur.jpg')}}" class="card-img" alt="pop-corn vengeur : boite de pop-corn masquée">
+        <div class="card-img-overlay">
+            <h3 class="card-title">Accès non autorisé</h5>
+            <p>{{status_code}} - {{status_text}}</p>
+        </div>
+    </div>
+
+{% endblock %}
