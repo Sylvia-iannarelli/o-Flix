@@ -124,13 +124,6 @@ class AppFixtures extends Fixture
 
         // ! FIXTURES USERS
 
-        $admin = new User();
-        $admin->setEmail("admin@oclock.io");
-        $admin->setRoles(["ROLE_ADMIN"]);
-        $admin->setPassword($this->passwordHasher->hashPassword($admin, "admin"));
-
-        $entityManager->persist($admin);
-
         $manager = new User();
         $manager->setEmail("manager@oclock.io");
         $manager->setRoles(["ROLE_MANAGER"]);
@@ -144,8 +137,6 @@ class AppFixtures extends Fixture
         $user->setPassword($this->passwordHasher->hashPassword($user, "user"));
 
         $entityManager->persist($user);
-
-
 
         $entityManager->flush();
     }
