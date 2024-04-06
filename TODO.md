@@ -1,7 +1,7 @@
 # Liste des choses à améliorer / développer
 
 - Profil du User
-- Créer un compte User
+- Créer un compte User (+ pour tester un compte "manager" me contacter)
 - Reset du password
 - Renvoyer du json sur les routes API avec blocage
 - Filtrer seulement les séries pour new Season
