@@ -31,7 +31,7 @@ class ReviewController extends AbstractController
 
             $this->addFlash("success", "Votre critique a été ajoutée");
 
-            return $this->redirectToRoute('app_movie_show', ['id' => $movie->getId()]);
+            return $this->redirectToRoute('app_movie_show', ['id' => $movie->getId(), 'slug' => $movie->getSlug()]);
         }
 
         return $this->renderForm('front/review/form.html.twig', [

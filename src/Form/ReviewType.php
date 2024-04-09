@@ -54,9 +54,9 @@ class ReviewType extends AbstractType
                 "choices" => [
                     "Rire" => "Rire",
                     "Pleurer" => "Pleurer",
-                    "Réfléchir" => "Réfléchir",
+                    "Réfléchir" => "Reflechir",
                     "Dormir" => "Dormir",
-                    "Rêver" => "Rêver"
+                    "Rêver" => "Rever"
                 ],
                 "expanded" => true,
                 "multiple" => true,
