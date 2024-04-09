@@ -29,9 +29,9 @@ class CastingType extends AbstractType
                 "choices" => [
                     "Premier" => "1",
                     "Deuxième" => "2",
-                    "Troisième" => "2",
-                    "Quatrième" => "2",
-                    "Cinquième" => "2",
+                    "Troisième" => "3",
+                    "Quatrième" => "4",
+                    "Cinquième" => "5",
                 ],
                 "expanded" => true,
                 "multiple" => false,
