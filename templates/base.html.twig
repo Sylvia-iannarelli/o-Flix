@@ -101,6 +101,10 @@
 							<a href="{{path('app_security_login')}}" type="button" class="btn btn-danger me-2">Connexion</a>
 						{% endif %}
 
+						{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+							<a href="{{path ('app_front_user_new')}}" type="button" class="btn btn-primary me-2">Inscription</a>
+						{% endif %}
+
 						<form class="d-flex" action="{{path("app_movie_list")}}">
 							<input class="form-control form-control-sm me-2" name="search" type="search" placeholder="Rechercher...">
 							<button class="btn btn-outline-danger" type="submit">

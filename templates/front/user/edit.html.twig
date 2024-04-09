@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block subBody %}
+    <h1>Modifier un utilisateur</h1>
+
+    {{ include('front/user/_form.html.twig') }}
+
+        <a class="btn btn-success  btn-lg" href="{{ path('app_main_home') }}"><i class="bi bi-box-arrow-left"></i></a>
+
+    </div>
+{% endblock %}
