@@ -37,7 +37,7 @@ class PersonController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $personRepository->add($person, true);
 
-            return $this->redirectToRoute('app_back_person_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_back_person_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/person/new.html.twig', [
