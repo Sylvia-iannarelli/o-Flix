@@ -18,11 +18,11 @@
 
                 <div
                     class="row g-0 border rounded overflow-hidden flex-md-row align-items-start mb-4 shadow-sm position-relative">
-                    <div class="col-4 movie__poster img-thumbnail">
+                    <div class="movie__poster img-thumbnail">
                         <img src="{{movie.poster}}" class="img-fluid">
                     </div>
 
-                    <div class="col-8 p-4 d-flex flex-column position-static bg-light">
+                    <div class="movie__info p-4 d-flex flex-column position-static bg-light">
                         {% include "front/favorite/_toggle_button.twig" %}
                         <strong class="d-inline-block mb-2 text-primary">{{movie.type}}</strong>
                         <h3 class="mb-1">{{movie.title}}</h3>

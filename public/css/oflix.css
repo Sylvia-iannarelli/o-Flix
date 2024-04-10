@@ -17,6 +17,11 @@ html {
 .movie__poster {
     background-position: center;
     background-size: cover;
+    width: 33%;
+}
+
+.movie__info {
+    width: 67%;
 }
 
 .movie__poster img {
@@ -30,4 +35,25 @@ html {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.favorite__container {
+    width: 50%;
+}
+
+
+@media screen and (max-width: 800px) {
+    .favorite__container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .movie__poster {
+        width: 100%;
+    }
+  
+    .movie__info {
+        width: 100%;
+    }
 }

@@ -31,10 +31,10 @@
                 {% for movie in movies %}
                     
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
-                        <div class="col-4 movie__poster">
+                        <div class="movie__poster">
                             <img src="{{ movie.poster }}" class="img-fluid">
                         </div>
-                        <div class="col-8 p-4 d-flex flex-column position-static">
+                        <div class="movie__info p-4 d-flex flex-column position-static">
 
                         {% include "front/favorite/_toggle_button.twig" %}
 

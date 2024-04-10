@@ -14,13 +14,13 @@
             <h2 class="text-muted fw-bold mb-4">Ma liste</h2>
 
             {% for index,movie in movies %}
-                <div class="col-6">
+                <div class="favorite__container">
 
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
-                        <div class="col-4 movie__poster">
+                        <div class="movie__poster">
                             <img src="{{movie.poster}}">
                         </div>
-                        <div class="col-8 p-4 d-flex flex-column position-static">
+                        <div class="movie__info p-4 d-flex flex-column position-static">
                             {% include "front/favorite/_toggle_button.twig" %}
                             <strong class="d-inline-block mb-2 text-primary">{{movie.type}}</strong>
                             <h3 class="mb-1 fs-5">{{movie.title}}</h3>
