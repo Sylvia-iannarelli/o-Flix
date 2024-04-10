@@ -63,7 +63,7 @@ class ReviewType extends AbstractType
                 "help" => "** plusieurs réponses possibles"
             ])
             ->add('watchedAt', DateType::class, [
-                "label" => "Date de visionnage :",
+                "label" => "Date de visionnage:",
                 "widget" => "single_text",
                 "input" => "datetime_immutable"
             ])

@@ -41,10 +41,17 @@ html {
     width: 50%;
 }
 
+.review__watchedAt {
+    width: 25%;
+}
 
 @media screen and (max-width: 800px) {
     .favorite__container {
         width: 100%;
+    }
+
+    .review__watchedAt {
+        width: 50%;
     }
 }
 
