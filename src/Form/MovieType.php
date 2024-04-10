@@ -39,16 +39,16 @@ class MovieType extends AbstractType
                 "widget" => "single_text",
                 "input" => "datetime_immutable"
             ])
-            ->add('synopsis', TextareaType::class, [
-                "label" => "Synopsis",
-                "attr" => [
-                    "placeholder" => "Synopsis"
-                ]
-            ])
             ->add('country', TextType::class, [
                 "label" => "Pays",
                 "attr" => [
                     "placeholder" => "Pays"
+                ]
+            ])
+            ->add('synopsis', TextareaType::class, [
+                "label" => "Synopsis",
+                "attr" => [
+                    "placeholder" => "Synopsis"
                 ]
             ])
             ->add('summary', TextareaType::class, [

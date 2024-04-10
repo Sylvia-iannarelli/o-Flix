@@ -37,6 +37,7 @@ class Movie
 
     /**
      * @ORM\Column(type="date_immutable")
+     * @Assert\NotBlank
      * @Groups({"movies"})
      */
     private $releaseDate;
@@ -45,13 +46,15 @@ class Movie
      * @ORM\Column(type="text")
      * @Groups({"movies"})
      * @Assert\Length(min=5)
+     * @Assert\Length(max=2500)
      */
     private $synopsis;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="text")
      * @Groups({"movies"})
      * @Assert\Length(min=5)
+     * @Assert\Length(max=2500)
      */
     private $summary;
 
