@@ -17,9 +17,9 @@
                 <div class="favorite__container">
 
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
-                        <div class="movie__poster">
-                            <img src="{{movie.poster}}">
-                        </div>
+                        <a class="movie__poster" href="{{ path('app_movie_show', {id: movie.id, slug: movie.slug}) }}" class="fs-1 mt-3 text-danger align-self-start">
+                            <img src="{{ movie.poster }}" class="img-fluid">
+                        </a>
                         <div class="movie__info p-4 d-flex flex-column position-static">
                             {% include "front/favorite/_toggle_button.twig" %}
                             <strong class="d-inline-block mb-2 text-primary">{{movie.type}}</strong>
