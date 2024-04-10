@@ -20,12 +20,14 @@ class ReviewController extends AbstractController
     public function add(Movie $movie, Request $request, EntityManagerInterface $entityManager): Response
     {
         $review = new Review;
+        $user = $this->getUser();
         $form = $this->createForm(ReviewType::class, $review);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
             $review->setMovie($movie);
+            $review->setUser($user);
             $entityManager->persist($review);
             $entityManager->flush();
 

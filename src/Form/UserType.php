@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -27,6 +28,13 @@ class UserType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use($options) {
 
             $form = $event->getForm();
+
+            $form->add('pseudo', TextType::class,[
+                "label" => "Pseudo",
+                "attr" => [
+                    "placeholder" => "Pseudo de l'utilisateur"
+                ]
+            ]);
 
             $form->add('email', EmailType::class,[
                 "label" => "Email",

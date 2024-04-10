@@ -72,15 +72,16 @@
 							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-										<span>{{app.user.email}} | 
-											{% if "ROLE_ADMIN" in app.user.roles %}	
+										<span>
+											{% if "ROLE_ADMIN" in app.user.roles %}
 												Administrateur
 											{% elseif "ROLE_MANAGER" in app.user.roles %}	
 												Manager
 											{% else %}	
 												Membre
 											{% endif %}
-											
+											<br>
+											{{app.user.pseudo}}
 										</span>
 										<i class="bi bi-person-circle"></i>
 									</a>
@@ -118,11 +119,11 @@
 		{% block body %}{% endblock %}
 
 		<!-- Random movie -->
-		{% if randomMovie is defined %}
+		{# {% if randomMovie is defined %}
 			<div class="text-center border-top pt-3">
 				<p>Un film au hasard : <a href="{{path("app_movie_show", {id:randomMovie.id, slug: randomMovie.slug})}}">{{randomMovie.title}}</a></p>
 			</div>
-		{% endif %}
+		{% endif %} #}
 
 		<!-- footer -->
 		<footer class="container-fluid py-4 border-top text-center">

@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Pseudo</th>
                 <th>Email</th>
                 <th>Rôles</th>
                 <th class="text-center">Actions</th>
@@ -21,6 +22,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+                <td>{{ user.pseudo }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>

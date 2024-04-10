@@ -105,8 +105,9 @@ class AppFixtures extends Fixture
 
             for ($m=0; $m < mt_rand(1,5); $m++) { 
                 $review = new Review();
-                $review->setUsername($faker->userName());
-                $review->setemail($faker->email());
+                // TODO à corriger suite suppression Username et email de l'entité review
+                // $review->setUsername($faker->userName());
+                // $review->setemail($faker->email());
                 $review->setContent($faker->text());
                 $review->setRating(mt_rand(1,5));
                 
